@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Neucha&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #B89C9C;
+}
+div {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+h1 {
+  text-align: center;
+  font-size: 75px;
+  color: #7E5A83;
+  margin: 60px 0 0 0;
+  font-family: 'Neucha', cursive;
+}
+h2 {
+  text-align: center;
+  color: #613B66;
+  margin: 0px 0 70px 0;
+  font-family: 'Neucha', cursive;
+}
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(114,78,119,1), rgba(171,38,189,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+  color: #F4A3FF;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://keto-mojo.com/wp-content/uploads/2020/09/Ramen-with-Shirataki-Noodles.jpg");
+}
+.second{
+  background-image: url("https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iEBH7o4sMFEY/v1/1200x-1.jpg");
+}
+.dessert{
+  background-image: url("https://asianfoodnetwork.com/content/dam/afn/global/en/recipes/takoyaki/Takoyaki_article_1920x1280_HERO5.jpg");
+}
+.price {
+  float: right;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 20px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-sfruitcake marzipan pudding dragee $8ize: 16px;
+  }
+  input {
+  	font-size: 22px;
+  }
+  
+}
+
+</style>
+
+</head>
+
+<body>
+<h1> Washimul's Restaurant</h1>
+<h2>Japanese Food</h2>
+<div class="first">
+  <div class="quantities"> <p>Ramen<span class="price">$15</span><br />
+  <small>Ramen is a Japanese noodle dish. It consists of Chinese-style wheat noodles served in a broth; common flavors are soy sauce and miso, with typical toppings including sliced pork, nori, menma, and scallions. Ramen has its roots in Chinese noodle dishes.  </small></p>
+</div>
+<input type="number" min="0" style="width: 50px">
+<div class="second">
+ <div class="quantities"> <p>Sushi<span class="price">$6</span><br />
+  <small>Sushi is a Japanese dish of prepared vinegared rice, usually with some sugar and salt, accompanied by a variety of ingredients, such as seafood, often raw, and vegetables. Styles of sushi and its presentation vary widely, but the one key ingredient is "sushi rice", also referred to as shari, or sumeshi.</small></p>
+</div>
+<input type="number" min="0" style="width: 50px">  
+<div class="dessert">
+ <div class="quantities"> <p>Takoyaki<span class="price">$8</span><br />
+  <small>Takoyaki is a ball-shaped Japanese snack made of a wheat flour-based batter and cooked in a special molded pan. It is typically filled with minced or diced octopus, tempura scraps, pickled ginger, and green onion. </small></p>
+</div>
+<input type="number" min="0" style="width: 50px">
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+</body>
+<br><br>
+<input id="Name" placeholder="Your name">
+  <input id="email" placeholder="Your email">
+ <input id="submit" type="submit">
+ <br><br>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBBOaETQFfSqTf-m-LvqlsHVKzrPsDCUT4",
+    authDomain: "japanese-food-7357c.firebaseapp.com",
+    projectId: "japanese-food-7357c",
+    storageBucket: "japanese-food-7357c.appspot.com",
+    messagingSenderId: "972771329735",
+    appId: "1:972771329735:web:05489a9fdee8ae023160e2",
+    measurementId: "G-CC507BXB16"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+ const Name = document.querySelector("#Name") 
+ const Email = document.querySelector("#Email")
+ document.querySelector('#submit').addEventListener('click', Submit)
+const quantities = document.querySelectorAll(".quantities") 
+const itemsList = ["Ramen", "Sushi", "Takayaki"]
+  
+   
+ function Submit() {
+   const timestamp = buildTimestamp()
+  let cart = { }
+  for  (let i=0; i<quantities.length; i=i+1) {
+  	if (quantities[i].value != "0" && quantities[i].value != "") {	
+  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+  	}
+  	quantities[i].value = ""
+  }
+  
+   set(ref(db, timestamp), {
+ 	  Name: Name.value,
+       email: Email.value,
+	   cart: cart,
+   });
+
+   Name.value = ""
+   Email.value = ""
+ }
+ function buildTimestamp() {
+   const now = new Date();
+   let timestamp = now.getFullYear().toString() + "/";
+   //const month = now.toLocaleString('default', { month: 'long' });
+
+   let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+   month = month.toString()
+   month = addLeadingZero(month)
+   timestamp += month + "/"; 
+
+   let date = now.getDate().toString()
+   date = addLeadingZero(date)
+   timestamp += date + "/";
+
+   let hours = now.getHours().toString()
+   hours = addLeadingZero(hours)
+   timestamp += hours + ":";
+
+   let minutes = now.getMinutes().toString()
+   minutes = addLeadingZero(minutes)
+   timestamp += minutes + ":";
+
+   let seconds = now.getSeconds().toString()
+   seconds = addLeadingZero(seconds)
+   timestamp += seconds;
+
+   return timestamp
+ }
+
+ function addLeadingZero(units) {
+ 	if (units.length < 2) {
+ 		units = "0" + units
+ 	}
+ 	return units
+ }
+ 
+  
+ </script>
